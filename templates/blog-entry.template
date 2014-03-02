@@ -1,0 +1,7 @@
+#+SETUPFILE: ~/org-pub/log/setup.org
+#+DATE: %U
+
+* %^{title}
+
+%^{text}
+

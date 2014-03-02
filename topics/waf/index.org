@@ -135,6 +135,10 @@ total 8
 
 In this example two files are created, =one.txt= out of thin air and =two.txt= based on =one.txt=.  Both of these files are then installed into a location based on the value of =PREFIX= which is set by the standard waf =--prefix= command line option.  A task is generated for each invocation of =bld()= as set by the =rule=.  Here the rule is a [[http://docs.waf.googlecode.com/git/book_16/single.html#_scriptlet_expressions][scriptlet]] which is essentially a shell script command with some string interpolation.  As can be seen, file redirection and other shell operators can be used.
 
+* Nodes
+
+* Tools
+
 
 
 

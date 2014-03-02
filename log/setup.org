@@ -1,0 +1,3 @@
+#+SETUPFILE: ~/org-pub/setup.org
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../../../../css/style.css" />
+#+HTML_HEAD: <script type="text/javascript" src="../../../../js/functions.js"></script>

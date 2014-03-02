@@ -1,0 +1,6 @@
+#+SETUPFILE: ~/org-pub/log/setup.org
+#+DATE: [2014-03-02 Sun 12:05]
+
+* Waf topic started
+
+I started a topic on waf.  It is meant to collect how-to notes about waf, provide fodder for an org-mode based blogging system and get more comfortable with executable code blocks, JavaScript/jQuery and CSS.

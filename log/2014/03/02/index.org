@@ -1,0 +1,74 @@
+#+SETUPFILE: ~/org-pub/log/setup.org
+#+DATE: [2014-03-02 Sun 12:05]
+
+* Using some JavaScript to add prefixes to an org-mode code block exported to HTML
+
+For the waf document I wanted to make the shell command examples have a "=$=" prefix.  I couldn't simply type them in the source block as that would break actually running them.  The solution was to learn a bit about JavaScript, jQuery, CSS and how to get all this injected into the org-mode export.
+
+First, the org content is like the following (using the command =date= as an example command):
+#+BEGIN_SRC org
+,#+BEGIN_SRC sh :results value code :exports both :wrap EXAMPLE 
+  date
+,#+END_SRC
+#+END_SRC
+
+After execution/export this block is put into HTML like:
+
+#+BEGIN_SRC html
+<div class="org-src-container">
+
+<pre class="src src-sh">date
+</pre>
+</div>
+#+END_SRC
+
+The execution produces this in the org file:
+
+#+BEGIN_SRC org
+#+RESULTS:
+#+BEGIN_EXAMPLE
+ Sun Mar  2 10:24:45 EST 2014
+#+END_EXAMPLE
+#+END_SRC
+
+And this in the HTML
+
+#+BEGIN_SRC html
+<pre class="example">
+Sun Mar  2 10:24:45 EST 2014
+</pre>
+#+END_SRC
+
+For purely single-line commands one can use CSS's something like:
+
+#+BEGIN_SRC css
+.src-sh:before {
+  content: "$ ";
+}
+#+END_SRC
+
+In my actual case I was batching together a few commands so wanted a way to insert the prompt before each line in the =<pre>= body.  This led me to JavaScript to modify the HTML in the browser.  To make this several steps are needed:
+
+- Use an 
+#+HTML: <a href="../topics/setup.org">org file</a> 
+for global setup of all topics in order to apply central CSS and JS files to each topic
+- In that, load [[http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js][this jQuery library]].  I don't really know jQuery but a lot of examples use it.  It looks handy
+- Also load [[../topics/functions.js][this local JS file]] that defines a function that loads after the page itself does and rewrites the =<pre>= tags with =src-sh= class to add a per-line CSS class =shell-line=
+- Finally, [[../topics/style.css][the CSS style file]] is also included which uses the similar =before= item
+
+#+BEGIN_SRC css
+.shell-line:before {
+    content: "$ ";
+}
+#+END_SRC
+
+Easy-peasy.  Four files, several pages of code, all to add a few =$='s!
+
+The next couple of improvements here are:
+
+** TODO Figure out how to add these prompts in such a way as to facilitate cut-and-paste.
+** TODO make this active for these blog pages as well.
+
+
+
+
