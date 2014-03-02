@@ -1,0 +1,7 @@
+#+TITLE: How this site is done.
+#+DATE: [2014-03-02 Sun 15:02]
+#+DESCRIPTION: The use of Emacs, org-mode, CSS and JavaScript to make this web site is described.
+#+SETUPFILE: ~/org-pub/topics/setup.org
+
+This web site is written with Emacs with [[http://orgmode.org][org-mode]] and a smattering of CSS and JavaScript.
+
