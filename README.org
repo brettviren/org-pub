@@ -1,2 +1,7 @@
 #+TITLE: Public Web Using Org-mode
 
+* Inspired by
+
+- http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+- http://steckerhalter.co.vu/posts/blogging-with-org-mode.html
+- http://kitchingroup.cheme.cmu.edu/
