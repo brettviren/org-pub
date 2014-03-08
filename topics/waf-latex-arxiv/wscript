@@ -36,11 +36,20 @@ def build(bld):
         outs = 'pdf',
         prompt = 0)
 
-    bld(rule = tarball,
-        source = man,
-        target = tar,
-        prefix = APPNAME +'-'+ VERSION,
-        extra = ['document-bib.bbl'])
+    # bld(rule = tarball,
+    #     source = man,
+    #     target = tar,
+    #     prefix = APPNAME +'-'+ VERSION,
+    #     extra = ['document-bib.bbl'])
+
+def dist(ctx):
+    from waflib.Context import out_dir
+    ctx.files = ctx.path.ant_glob('wscript')
+    with open(os.path.join(out_dir, APPNAME+'.manifest')) as fp:
+        for fname in fp.read().split('\n'):
+            if not fname:
+                continue
+            ctx.files.extend(ctx.path.ant_glob(fname))
 
 import tarfile
 def tarball(task):
@@ -57,8 +66,6 @@ def tarball(task):
             if node.is_bld():
                 path = node.bldpath()
             tf.add(node.nice_path(), prefix +'/'+ path)
-            
-        
 
 import os
 from waflib.TaskGen import feature, after_method
