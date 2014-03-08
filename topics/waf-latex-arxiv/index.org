@@ -1,0 +1,16 @@
+#+TITLE: Using waf to produce a tarball for submission to the arXiv.
+#+DATE: [2014-03-08 Sat 14:44]
+#+DESCRIPTION: 
+#+SETUPFILE: ~/org-pub/topics/setup.org
+
+Waf has good built-in support for building LaTeX documents.  When submitting to the [[http://www.arxiv.org][arXiv]] one has to prepare a tarball that contains just the files needed to produce the document and little more.  
+
+Waf also has =waf dist= to produce a tarball of the "source" files.  When I tried this in a LaTeX source area it tarred up everything.  Unfortunately [[https://cdcvs.fnal.gov/redmine/projects/lbne-sci-opp/repository/show/lbne-sci-opp][the document]] in question has a lot of extraneous files in the working directory (and repository) that should not be included.  This is particularly important as the arXiv has a size limit.
+
+I [[https://groups.google.com/forum/#!topic/waf-users/H_lPHWLBF5w][asked about it]] on waf's google groups and got some tips to try out.  Waf has to figure out all the files the document is built from in order to know when they change and a rebuild is needed.  The idea is to try to leverage this TeX scanner and turn that list of files into a manifest that can become fodder for a tar command.
+
+Testing this inside the desired document directory is dog slow so I mocked up a little test document.  This document is a little unusual in that two "main" files are required: [[./document.tex]] and [[./document-bib.tex]].  The first includes the Bibitex =.bbl= file from the second.  This is needed because arXiv does not run Bibtex for us and so we need a way to generate it and produce a main which is independent from Bibtex.
+
+
+
+

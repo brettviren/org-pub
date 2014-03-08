@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+'''
+A LaTeX document that gets tarred up.
+'''
+
+APPNAME = "document"
+VERSION = '0.0.0'
+
+def options(opt):
+    opt.load('tex')
+    return
+
+def configure(cfg):
+    cfg.load('tex')
+    cfg.env.append_value('PDFLATEXFLAGS','-halt-on-error')
+
+
+def build(bld):
+    
+    bbl_tex = 'document-bib.tex'
+    bld(features = 'tex',
+        type = 'pdflatex',
+        source = bbl_tex,
+        outs = 'pdf',
+        prompt = 0)
+
+    bld.add_group()
+
+    extensions = ['tex','pdf','manifest','tar.gz']
+    nodes = [bld.path.find_or_declare(APPNAME+'.'+ext) for ext in extensions]
+    tex, pdf, man, tar = nodes
+
+    bld(features = 'tex',
+        type = 'pdflatex',
+        source = tex,
+        outs = 'pdf',
+        prompt = 0)
+
+    bld(rule = tarball,
+        source = man,
+        target = tar,
+        prefix = APPNAME +'-'+ VERSION,
+        extra = ['document-bib.bbl'])
+
+import tarfile
+def tarball(task):
+    prefix,extra = task.generator.prefix, task.generator.extra
+    tfname = task.outputs[0].abspath()
+    ext = os.path.splitext(tfname)[1][1:]
+    with tarfile.open(tfname, 'w:'+ext, ) as tf:
+        for path in task.inputs[0].read().split('\n'):
+            if not path:
+                continue
+            tf.add(path, prefix +'/'+ path)
+        for path in extra:
+            node = task.generator.bld.path.find_or_declare(path)
+            if node.is_bld():
+                path = node.bldpath()
+            tf.add(node.nice_path(), prefix +'/'+ path)
+            
+        
+
+import os
+from waflib.TaskGen import feature, after_method
+@feature('tex') 
+@after_method('apply_tex') 
+def create_another_task(self): 
+    tex_task = self.tasks[-1] 
+    at = self.create_task('manifest', tex_task.outputs) 
+    doc = tex_task.outputs[0]
+    man = os.path.splitext(str(doc))[0] + '.manifest'
+    man_node = self.bld.path.find_or_declare(man)
+    at.outputs.append(man_node)
+    at.tex_task = tex_task 
+    # # rebuild whenever the tex task is rebuilt 
+    at.dep_nodes.extend(tex_task.outputs) 
+
+from waflib.Task import Task
+class manifest(Task):
+    def run(self):
+        man_node = self.outputs[0]
+        self.outputs.append(man_node)
+        idx = self.tex_task.uid() 
+        # print 'TEX DEPS:', self.generator.bld.node_deps[idx] 
+        # print 'MY  DEPS:', self.dep_nodes 
+        nodes = self.generator.bld.node_deps[idx]
+        with open(man_node.abspath(), 'w') as fp:
+            for node in nodes:
+                fp.write(node.nice_path() + '\n')
