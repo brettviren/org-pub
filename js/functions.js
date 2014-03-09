@@ -13,7 +13,7 @@ $( document ).ready (function () {
 
     // broken way to do things for now.
     $( "div.status" ).prepend( $('<br><a href="index.org">org source</a>') )
-    $( "div.status" ).prepend( document.createTextNode( $(location).attr("href")) );
+    $( "div.status" ).prepend( $('<hr></hr>') )
 
 });
 

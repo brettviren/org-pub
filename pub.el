@@ -1,10 +1,15 @@
 ;; This should be a symlink to the installed version like:
 ;; ~/.emacs.d/elpa/org-20140104/
-(add-to-list 'load-path "~/.emacs.d/org")
 
+(add-to-list 'load-path "~/org-pub/emacs.d/htmlize")
+(add-to-list 'load-path "~/org-pub/emacs.d/org")
+
+(require 'htmlize)
 (require 'org)
 (require 'org-publish)
 
+(setq org-src-fontify-natively t)
+(setq org-export-htmlize-output-type 'css)
 (setq org-publish-project-alist
       
       `(("blog"
@@ -43,7 +48,7 @@
          <link rel=\"shortcut icon\" href=\"/img/steckerhalter.ico\">
          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\" />"
          :html-html5-fancy t
-         :html-head-include-default-style nil
+         :html-head-include-default-style t
 	 )
 
 	("blog-topics"
@@ -69,7 +74,7 @@
          <link rel=\"shortcut icon\" href=\"/img/steckerhalter.ico\">
          <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\" />"
          :html-html5-fancy t
-         :html-head-include-default-style nil
+         :html-head-include-default-style t
 	 )
 
 

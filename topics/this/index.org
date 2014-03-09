@@ -5,3 +5,7 @@
 
 This web site is written with Emacs with [[http://orgmode.org][org-mode]] and a smattering of CSS and JavaScript.
 
+* Links
+
+- http://www.seas.upenn.edu/~heqin/academic/sitecreation.html
+- http://doc.norang.ca/org-mode.html
