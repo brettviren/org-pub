@@ -1,0 +1,142 @@
+#+TITLE: Ideas on a waf-based software development system
+#+DATE: [2014-03-25 Tue 20:18]
+#+DESCRIPTION: 
+#+SETUPFILE: ~/org-pub/topics/setup.org
+
+Random spew of thoughts.
+
+* Environment Management Tool
+
+- Take ideas from EM and CMT (EM+CMT=EMT).
+
+- Use configuration files EM =modulesfiles= but use Python =ConfigParser= syntax, =str.format()= expansion.
+
+- Configuration files are named with =.emt= extension (by convention only, not required) and are called "EMT files"
+
+** EMT file conventions 
+
+A package instance (or just "package") means all files related to some
+software which has already been installed to some location.  
+
+A package is described in a =[package]= section of an EMT file.
+
+A package has a number of identifiers including =name= and =version=.  A special identifier =id= is used to refer to a package instance in a globally unique way.
+
+A package section may define or modify a number shell environment variables as needed to use the package.
+
+An EMT file may have multiple sections to describe more than one package.
+
+A package section does not necessarily mean the package is to be applied.
+
+EMT files are located through the following conventions applied in order:
+
+1) the file =~/.emt=
+2) the file =./config.emt=
+3) include directives 
+4) file discovery 
+
+Include directives and file discovery rely on a directory list called the EMT path.
+
+Include directives are listed in EMT files and simply name other files to include.  Their locations are resolved through iterating the EMT path.
+
+File discovery works by walking the EMT path to find EMT files.  For each directory in that path, files ending in =.emt= are collected.
+
+** EMT file loading
+
+An EMT configuration is produced in the following ordered steps
+
+- file collection :: follows above conventions and files are kept in the order found
+- file parsing :: files are effectively concatenated and all [package] sections are parsed and remain in order
+- interpolation :: any variables are interpolated
+- interpretation :: the configuration is used to do something
+
+** EMT configuration language
+
+*** Syntax
+
+The EMT configuration syntax is that of Python's =ConfigParser= aka INI format.  It consists of a number of named sections each containing a number of key/value pairs.  Initial parsing treats all keys and values as literal strings.  Valid syntax allows any section names to be used.  Any unrecognized sections will be ignored.  Recognized sections include:
+
+- defaults :: specify default values of variables, multiple sections are merged.  In the case of duplication, last wins.  Default values are effectively merged into each package section. 
+- includes :: any number of sections may specify information about including files
+- package :: a package description
+
+*** Interpolation
+
+Values undergo string interpolation.  This allows them to be composed from information specified elsewhere.  String interpolation is applied to the contents inside any braces '={}=' found.  These may reference other keys from the current section or from the =defaults= section by writing their key in braces.  Values from other packages may be referenced by prefixing their values with the =id= and a colon =:=.  
+
+#+BEGIN_SRC config
+[defaults]
+id = {name}-{version}
+
+[package]
+name = foo
+version = 1.0
+
+[package]
+name = bar
+version = 1.0
+id = {name}_{version}
+fooversion = {foo:version}
+#+END_SRC
+
+*** Interpretation
+
+The EMT configuration is finally interpreted to produce some result.  The interpretation will take the post-interpolation configuration and apply some semantic meaning to the package configuration items.  Depending on what interpretation is made different keys may be used.  Some keys of importance are:
+
+- require :: assert a package requires another package as specified by the value
+- envvar_X :: the environment variable =X= should be set or modified as specified by the value
+- source :: the file identified by the value should be sourced 
+
+
+
+* Think about some examples
+
+The package =A= produces an application.  I requires a library and headers from package =B=.  In building =A= the system must be able to locate =libB= and =B.h= output by package =B=.  Locating these output files obviously depends on where they are placed by the system.
+
+A suite of =N= packages are needed.  They provide some number of applications, headers and libraries.  Users of this suite must be able to run the applications.  Users will extend this suite with their own packages that contain code that builds against the headers and libraries.
+
+Of the =N= packages, =M= need development.  The =N-M= packages that have been installed should be reused.
+
+
+Two ways to place things:
+
+- root version :: the Unix filesystem approach.  Have a central root directory and install all output results together.  =/root/bin=, =/root/lib=, =/root/include=, etc.  
+- ver
+
+
+* Requirements
+
+The system must satisfy some basic requirements.
+
+- Support multiple developers
+- Leverage a central release installation
+- Allow portions of the central release to be overridden by individuals with newer versions
+- Manage dependencies
+- Manage but minimize user environment variables
+- Encourage definitions of units of code ("packages")
+
+* What does the system cover
+
+- Define a unit of source code called a package which produce some derived output
+- Rules for producing output are simple to express simple things, allow for complex things
+- Express dependencies between packages allowing one to locate the products of another.
+
+
+* Not
+
+This system is in the vein of
+
+- CMT
+
+ 
+* Concepts
+
+** CMT
+
+In CMT there are projects of packages.  Packages can depend on other packages to form a dependency tree.  Commands can be "broadcast" to packages on this tree.  This broadcast is serial (but there is a parallel variant) and progresses from the leaves of the dependency sub-tree that is rooted in the "current" package.  Current package is determined by the directory in which the command was broad cast.
+
+** A package
+
+A package is a directory with a build system control file.
+
+

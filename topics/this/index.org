@@ -9,3 +9,6 @@ This web site is written with Emacs with [[http://orgmode.org][org-mode]] and a 
 
 - http://www.seas.upenn.edu/~heqin/academic/sitecreation.html
 - http://doc.norang.ca/org-mode.html
+- http://www.nicolas-petton.fr/blog/blogging-with-org-mode.html
+- http://stevenbagley.net/blog/blog-with-emacs-org-mode.html
+- http://kerunix.com/blog-using-orgmode-and-pelican.html
