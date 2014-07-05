@@ -1,9 +1,14 @@
 #!/bin/bash
 
-mydir=$(dirname $BASH_SOURCE)
+set -e
+
+mydir=$(dirname $(readlink -f $BASH_SOURCE))
 cd $mydir
 
 emacsdir=$mydir/emacs.d
+if [ ! -d "$emacsdir" ] ; then
+    mkdir -p $emacsdir
+fi
 
 rm -rf $emacsdir
 mkdir -p $emacsdir
@@ -21,5 +26,6 @@ fi
 for what in "$topub"
 do
     echo "Building $what"
+    pwd
     emacs --batch -Q -l pub.el --eval "(org-publish-project \"$what\")"
 done

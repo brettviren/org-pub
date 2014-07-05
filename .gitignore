@@ -3,7 +3,6 @@
 *.lock-waf*
 build
 install
-emacs.d
 sitemap.org
 theindex.org
 theindex.inc
