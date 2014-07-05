@@ -71,7 +71,7 @@ bv@lbnegpvm01:~>  setup root v5_32_00 -z /grid/fermiapp/products/lbne/db
 bv@lbnegpvm01:~> xrdcp root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/lbne/mc/lbne/simulated/001/35T_singleparticle_pizero_30_1.root /tmp/junk.root
 -bash: xrdcp: command not found
 bv@lbnegpvm01:~> root -l root://fndca1.fnal.gov:1094/pnfs/fnal.gov/usr/lbne/mc/lbne/simulated/001/35T_singleparticle_pizero_30_1.root 
-*** DISPLAY not set, setting it to 130.199.229.13:0.0
+ *** DISPLAY not set, setting it to 130.199.229.13:0.0
 dlopen error: libXrdOuc.so.0: cannot open shared object file: No such file or directory
 Load Error: Failed to load Dynamic link library /grid/fermiapp/products/lbne/prd/root/v5_32_00/Linux64bit-2-6-2-5/lib/libNetx.so
 root [0] 
