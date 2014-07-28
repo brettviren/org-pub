@@ -8,8 +8,11 @@
 (require 'org)
 (require 'org-publish)
 
+
+
 (setq org-src-fontify-natively t)
 (setq org-export-htmlize-output-type 'css)
+;(setq org-publish-sitemap-file-entry-format "%t  (%d)")
 (setq org-publish-project-alist
       
       `(("blog"
@@ -23,7 +26,9 @@
 	 :base-extension "css\\|js\\|png\\|org"
 	 :publishing-directory "~/public_html/pub"
 	 :recursive t
+	 :sitemap-sort-files anti-chronologically
          :publishing-function org-publish-attachment)
+
 
 	("blog-log"
 	 :base-extension "org"
@@ -36,6 +41,7 @@
          :headline-levels 4
          :auto-sitemap t
          :sitemap-title "Sitemap"
+	 :sitemap-sort-files anti-chronologically
          :section-numbers nil
          :with-toc nil
          :with-author nil
@@ -59,13 +65,19 @@
          :publishing-function org-html-publish-to-html
 	 ;:preparation-function org-mode-blog-prepare
          :export-with-tags nil
+	 :export-creator-info nil
+         :export-author-info nil
          :headline-levels 4
          :auto-sitemap t
          :sitemap-title "Sitemap"
+	 :sitemap-style list
+	 :sitemap-sort-files anti-chronologically
          :section-numbers t
          :with-toc t
          :with-author t
          :with-creator t
+	 :with-tags t
+	 :exclude-tags ("noexport" "todo")
          :html-doctype "html5"
          :html-preamble org-pub-preamble
          :html-postamble "<hr><div id='comments'></div>"
