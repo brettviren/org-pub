@@ -1,0 +1,120 @@
+#+TITLE: ELog at BNL Physics Department
+#+DATE: [2014-07-18 Fri 11:07]
+#+DESCRIPTION: The ELog online logbook was selected for use by a few groups in BNL's Physics department.  This topic describes that selection, its setup and other related matters.
+#+SETUPFILE: ~/org-pub/topics/setup.org
+
+A few R&D groups, largely filled by members of the Electronic Detector Group in the BNL Physics department, recognized the need for an online logbook.  A survey was done to find what was available and [[http://midas.psi.ch/elog/][ELog]] was selected.  This documents the selection, prototyping and production setup.
+
+* Comparison with other potential systems
+
+ELog is by far the most popular system as judged by various Google searches.  There is also significant, prior experience with ELog among the primary users of the new system.  A few others were considered.
+
+** Fermilab ECL
+
+[[https://cdcvs.fnal.gov/redmine/projects/crl/wiki][ECL]] is a rewrite of a prior system from Fermilab called CRL but it had no expression of interest from the primaries.
+
+** Evernote
+
+[[../sci-log-book-comp/index.org][ELog and Evernote were compared]].   
+
+** Bloknot
+
+After the Evernote comparison was done another option was found in our own backyard.  This was [[http://bloknot.sourceforge.net/][bloknot]] written by our own Vlodya Tishchenko who uses it as his own personal logbook.  A few observations of this system
+
+- It has many similarities to ELog in content, presentation, and backend storage method
+- It's extensible through plugins (PHP).
+- It supports HTML, plain text and markdown
+
+While it was recognized that bloknot was very impressive it was not selected largely due to the greater familiarity the primaries have with ELog and the lack of expected community/support for bloknot.
+
+* Access policy
+
+The desired ELog access policy is:
+
+ - auth is required to read or write, no anonymous access
+
+ - read-write accounts are per-individual (no sharing)
+
+ - read-only accounts may be shared
+
+ - write-once, read always (no edits nor deletes by normal users)
+
+ - admin level access may delete entries
+
+ - otherwise, a flat access control, any read-write user can write to
+   any logbook, any auth'ed user can read any logbook
+
+* Logbook organization
+
+The organization is to be a hierarchy of groups of logbooks.  At top level are "WbLS" and "LAr" for these two R&D efforts.  Future groups are expected.  Organization below this top level is up to the group.  One expected future expansion might be to add a "Summer Students" group with one logbook per student.
+
+Initial groups
+
+ - WbLS
+ - LAr
+ - Compton Scattering
+
+* Installation
+
+The =elogd= process will run as a dedicated user "=elog=" and will be monitored by [[http://supervisord.org/][supervisord]].  It will only listen on =localhost= and be exposed to the Internet via Apache (running as it's own user).  
+
+** Prepare
+
+Make the user to run the ELog daemon:
+
+#+BEGIN_EXAMPLE
+  $ sudo useradd -c "ELog Server" -d /home/elog -m -r -s /bin/bash elog
+  $ sudo su - elog
+#+END_EXAMPLE
+
+** Install ELog
+
+#+BEGIN_EXAMPLE
+  $ mkdir code
+  $ cd code
+  $ git clone https://bitbucket.org/ritt/elog.git
+  $ git clone https://bitbucket.org/tmidas/mxml.git
+  $ cd elog
+  $ make ROOT=/home/elog/opt
+  $ make ROOT=/home/elog/opt install
+#+END_EXAMPLE
+
+** Initial Configure
+
+#+BEGIN_EXAMPLE
+  $ mkdir ~/cfg
+  $ cd ~/cfg
+  $ cp ~/code/elog/elogd.cfg .
+  $ git init
+  $ git add elogd.cfg
+  $ git commit -a -m "First commit of default config."
+#+END_EXAMPLE
+
+** Test
+
+#+BEGIN_EXAMPLE
+  $ ~/opt/usr/local/sbin/elogd -c ~/cfg/elogd.cfg -s ~/opt/usr/local/elog -d ~/logbooks
+#+END_EXAMPLE
+
+And, visit: http://localhost:8080/
+
+** Apache
+
+In an Apache's SSL site config file's =VirtualHost= section, add:
+
+#+BEGIN_EXAMPLE
+  Redirect permanent /elog http://localhost:8080/elog/
+  ProxyPass /elog/ http://localhost:8080/
+#+END_EXAMPLE
+
+ELog needs to be told what URL to assume:
+
+#+BEGIN_EXAMPLE
+  [global]
+  port = 8080
+  URL = https://lycastus.phy.bnl.gov/elog/
+#+END_EXAMPLE
+* Configuration
+
+In the [[Installation]] section is the minimum to get ELog to answer requests through Apache/SSL.  This section says how to configure ELog to implement the desired [[Access policy]].
+
