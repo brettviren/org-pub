@@ -8,3 +8,5 @@ theindex.org
 theindex.inc
 *.aux
 *.log
+index.pdf
+index.tex

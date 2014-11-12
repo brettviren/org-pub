@@ -250,7 +250,7 @@ Each repository will need to be checked out to a local branch from a suitable st
   Switched to a new branch 'feature/MYWORK'
   Switched to a new branch 'feature/MYWORK'
   ...
-  repo branches
+  $ repo branches
   ,*  feature/MYWORK            | in all projects
 #+END_EXAMPLE
 

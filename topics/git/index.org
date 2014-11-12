@@ -1,0 +1,135 @@
+#+TITLE: Git Tricks
+#+DATE: [2014-09-05 Fri 10:16]
+#+DESCRIPTION: Various techniques for using git.
+#+SETUPFILE: ~/org-pub/topics/setup.org
+
+* Version control and release management
+
+I want to automate management of versions and their releases.  For that I use [[https://github.com/nvie/gitflow][git-flow]], [[https://github.com/peritus/bumpversion][bumpversion]] and for Python packages some custom tweak to set the version.  Here is me making a release of [[https://github.com/LBNE/lbne-build][lbne-build]].  It starts with me in a clean repository sitting on the =develop= branch.
+
+#+BEGIN_EXAMPLE
+  $ git flow release start 0.3.3
+  Branches 'develop' and 'origin/develop' have diverged.
+  And local branch 'develop' is ahead of 'origin/develop'.
+  Switched to a new branch 'release/0.3.3'
+
+  Summary of actions:
+  - A new branch 'release/0.3.3' was created, based on 'develop'
+  - You are now on branch 'release/0.3.3'
+
+  Follow-up actions:
+  - Bump the version number now!
+  - Start committing last-minute fixes in preparing your release
+  - When done, run:
+
+       git flow release finish '0.3.3'
+#+END_EXAMPLE
+
+To "bump the version" the very nice =bumpversion= script is used.  To start out it's =./.bumpversion.cfg= script is primed (or as-is from last use) like:
+
+#+BEGIN_EXAMPLE
+[bumpversion]
+current_version = 0.3.2
+tag_name = {new_version}
+commit = False
+
+[bumpversion:file:RELEASE-VERSION]
+#+END_EXAMPLE
+
+To "bump the version" all one has to do is run the =bumpversion= script with the version "level" of the bump (=major=, =minor= or =patch=).  
+
+#+BEGIN_EXAMPLE
+  $ cat RELEASE-VERSION 
+  0.3.2
+  $ bumpversion patch
+  $ cat RELEASE-VERSION 
+  0.3.3
+#+END_EXAMPLE
+
+It's a long walk to take to change one character but once set up it's much easier than editing files by hand and this scales well to cases that require the version to change in multiple places.
+
+To finish the release I do:
+
+#+BEGIN_EXAMPLE
+  $ git commit -a -m "Ready for release 0.3.3"
+  $ git flow release finish 0.3.3
+  (accept default commit messages but do add an annotation to the tag)
+  ...
+  Summary of actions:
+  - Release branch 'release/0.3.3' has been merged into 'master'
+  - The release was tagged '0.3.3'
+  - Release tag '0.3.3' has been back-merged into 'develop'
+  - Release branch 'release/0.3.3' has been locally deleted
+  - You are now on branch 'develop'
+
+  $ git push --tags
+  ...
+  To git@github.com:LBNE/lbne-build.git
+   ,* [new tag]         0.3.3 -> 0.3.3
+#+END_EXAMPLE
+
+
+** Development Version Lies
+
+One thing I really detest is leaving a release version as-is outside of the release branch.  I would like code in the =develop= branch or any feature branches to always represent itself as some version *other* than whatever release happen to have been made in the recent past.  I'd settle for the version to be simply a rather anonymous "=dev=" tag or better one that represents how "close" the development is to some established release. 
+
+Thankfully =git= comes to the rescue with:
+
+#+BEGIN_EXAMPLE
+  $ git describe --dirty
+  0.3.2-2-g24c4c90-dirty
+#+END_EXAMPLE
+
+If sitting on a commit with an annotated tag it will give that tag.  Otherwise it will (by default) give the number of commits away from that tag and the start of the hash of the commit it sits on.  The =--dirty= option tells it to additionally tack on that "-dirty" flag if the git working directory has modifications.
+
+Perfect.
+
+Unfortunately there is not yet support in =bumpversion= to somehow integrate this (which I can find).  And if there were, it would likely lead to an arms race between the desire to mark a version and the fact that marking it in a file controlled by git will dirty up the repository.
+
+So, to use this in a development context it is best to use it at the point of version string *consumption* rather than version string *production*.
+
+*** Python packages
+
+For Python packages this is added to =setup.py= with these few lines:
+
+#+BEGIN_SRC python
+  def git(cmd):
+      import subprocess    
+      return subprocess.check_output("git %s"%cmd, shell=True).strip()
+
+  def current_version():
+      branch = [x[2:] for x in git("branch").split('\n') if x.startswith('* ')][0]
+      if branch.startswith("release/"):
+          return open("RELEASE-VERSION").read().strip()
+      return git("describe --dirty")
+
+  setup(name = ...,
+        version = current_version(),
+        ...)
+#+END_SRC
+
+Test with:
+
+#+BEGIN_EXAMPLE
+  $ git branch 
+  develop
+  master
+  ,* release/0.3.3
+  $ git describe --dirty
+  0.3.2-2-g24c4c90-dirty
+  $ python setup.py --version
+  0.3.3
+#+END_EXAMPLE
+
+I can now produce a test package with what will become the release version.  Of course, I have to be careful not to distribute this test package until I'm ready and the release branch is closed.  The "real" release package can be produced at any later time by making a checkout using the release tag:
+
+#+BEGIN_EXAMPLE
+  $ git checkout -b v0.3.3 0.3.3
+  Switched to a new branch 'v0.3.3'
+  $ python setup.py --version
+  0.3.3
+  $ git describe 
+  0.3.3
+  $ git describe --dirty
+  0.3.3
+#+END_EXAMPLE
