@@ -14,3 +14,9 @@ This web site is written with Emacs with [[http://orgmode.org][org-mode]] and a 
 - http://kerunix.com/blog-using-orgmode-and-pelican.html
 - http://steckerhalter.co.vu/posts/blogging-with-org-mode.html
 - http://justinlilly.com/emacs/orgmode_static_site_generator.html
+* Testing section closed time stamps
+  CLOSED: [[2015-01-24 Sat 10:20]]
+
+This section was created with a closed date.
+
+Now reopened.
