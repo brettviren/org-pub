@@ -8,7 +8,9 @@
 (require 'org)
 (require 'org-publish)
 
-
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
 
 (setq org-src-fontify-natively t)
 (setq org-export-htmlize-output-type 'css)
