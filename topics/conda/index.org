@@ -1,6 +1,7 @@
 #+TITLE: Using Conda To Package Stuff
 #+DATE: [2014-11-21 Fri 19:28]
 #+DESCRIPTION: Oh dear, worch may just have been obsoleted.
+#+CATEGORY: Build
 #+SETUPFILE: ~/org-pub/topics/setup.org
 
 * Overview
@@ -94,7 +95,7 @@ That gets ROOT installed but in what I think is a wrong location.  I can try the
 
 But, starting ROOT crashes and burns.  Maybe due to it being version 5.99.
 
-* COMMENT Build up explicit devel env
+* Build up explicit devel env
 
 #+BEGIN_EXAMPLE
   $ conda create -n gcc29py27 python=2 

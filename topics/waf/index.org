@@ -1,6 +1,10 @@
 #+TITLE: Building with waf
 #+DATE: [2014-03-01 Sat 09:56]
+#+MODIFIED: [2015-03-01 Sat 09:56]
 #+DESCRIPTION: Making a better build system with waf.
+#+SUBTITLE: Making a better build system with waf.
+#+CATEGORY: Build
+#+TAGS: overview,waf
 #+SETUPFILE: ~/org-pub/topics/setup.org
 
 The venerable workhorse of building software has long been [[https://www.gnu.org/software/make/][=make=]] driven by its quirky and sometimes cryptic =Makefile= configurations.  Anytime I must write even a moderately complex build system based on =make= I dream of having a simple, consistent and real programming language to describe the configuration instead of the language of a =Makefile=.  Lacking it, when I use =make= I end up relying on a zoo of external tools which leads to a hodgepodge.
@@ -50,7 +54,7 @@ can be exercised as:
 
 A waf command function is given a context object.  This context object may be specialized depending on the function called.  The figure from the  [[http://docs.waf.googlecode.com/git/apidocs_17/Context.html][context reference docs]] shows the inheritance:
 
-#+CAPTION: Inheritance of context classes.  Note, the arrows are reversed from the sense they would be drawn in a UML inheritance diagram.  [[http://docs.waf.googlecode.com/git/apidocs_17/_images/inheritance-dea819e6108f006ac39105a1645345c6b6d66226.png][copy from ref docs]]
+#+CAPTION: Inheritance of context classes.  Note, the arrows are reversed from the sense they would be drawn in a UML inheritance diagram. 
 #+NAME: fig:context-inheritance
 [[./context-inheritance.png]]
 
@@ -134,15 +138,3 @@ total 8
 #+END_EXAMPLE
 
 In this example two files are created, =one.txt= out of thin air and =two.txt= based on =one.txt=.  Both of these files are then installed into a location based on the value of =PREFIX= which is set by the standard waf =--prefix= command line option.  A task is generated for each invocation of =bld()= as set by the =rule=.  Here the rule is a [[http://docs.waf.googlecode.com/git/book_16/single.html#_scriptlet_expressions][scriptlet]] which is essentially a shell script command with some string interpolation.  As can be seen, file redirection and other shell operators can be used.
-
-* Nodes
-
-* Tools
-
-
-
-
-
-
------
-

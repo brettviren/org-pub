@@ -1,29 +1,32 @@
-;; This should be a symlink to the installed version like:
-;; ~/.emacs.d/elpa/org-20140104/
-
 (add-to-list 'load-path "~/org-pub/emacs.d/htmlize")
 (add-to-list 'load-path "~/org-pub/emacs.d/org")
 
 (require 'htmlize)
 (require 'org)
-(require 'org-publish)
+;(require 'org-publish)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((python . t)))
+
+
+(defun bv-pub-postamble (options)
+  "Returns HTML to use as the postamble"
+  (concat "<b/><hr/><b/><a href=\"" (plist-get options :input-buffer) "\">Org source</a>"))
+	  
 
 (setq org-src-fontify-natively t)
 (setq org-export-htmlize-output-type 'css)
 ;(setq org-publish-sitemap-file-entry-format "%t  (%d)")
 (setq org-publish-project-alist
       
-      `(("blog"
+      `(("pub-all"
 	 :components (
-		      "blog-static"
-		      "blog-log"
-		      "blog-topics"
+		      "pub-static"
+;		      "pub-log"
+		      "pub-topics"
 		      ))
-	("blog-static"
+	("pub-static"
 	 :base-directory "~/org-pub"
 	 :base-extension "css\\|js\\|png\\|org"
 	 :publishing-directory "~/public_html/pub"
@@ -32,7 +35,7 @@
          :publishing-function org-publish-attachment)
 
 
-	("blog-log"
+	("pub-log"
 	 :base-extension "org"
 	 :base-directory "~/org-pub/log"
 	 :publishing-directory "~/public_html/pub/log"
@@ -59,7 +62,7 @@
          :html-head-include-default-style t
 	 )
 
-	("blog-topics"
+	("pub-topics"
 	 :base-extension "org"
 	 :base-directory "~/org-pub/topics"
 	 :publishing-directory "~/public_html/pub/topics"
@@ -75,14 +78,14 @@
 	 :sitemap-style list
 	 :sitemap-sort-files anti-chronologically
          :section-numbers t
-         :with-toc t
+         :with-toc nil
          :with-author t
          :with-creator t
 	 :with-tags t
 	 :exclude-tags ("noexport" "todo")
          :html-doctype "html5"
-         :html-preamble org-pub-preamble
-         :html-postamble "<hr><div id='comments'></div>"
+         :html-preamble t
+         :html-postamble bv-pub-postamble
          :html-head  "<link rel=\"stylesheet\" href=\"/css/style.css\" type=\"text/css\"/>\n"
          :html-head-extra "<script async=\"true\" src=\"/js/juvia.js\"></script>
          <link rel=\"shortcut icon\" href=\"/img/steckerhalter.ico\">
@@ -90,11 +93,22 @@
          :html-html5-fancy t
          :html-head-include-default-style t
 	 )
-
-
         ))
+
+;(setq org-export-html-postamble-format "
+;<b>
+;<hr>
+;<p class=\"postamble\">Last Updated %d. Created by %c</p>
+;THIS IS THE END.
+;")
+
 
 (defun org-pub-preamble (options)
   "Returns HTML to use as the preamble"
   (let ((base-directory (plist-get options :base-directory)))
     (org-babel-with-temp-filebuffer (expand-file-name "../html/preamble.html" base-directory) (buffer-string))))
+
+
+(defun org-pub-postamble (options)
+  "Returns HTML to use as the postamble"
+  buffer-file-name)

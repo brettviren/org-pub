@@ -20,7 +20,7 @@ done
 
 topub="$@"
 if [ -z "$topub" ] ; then
-    topub="blog"
+    topub="pub-all"
 fi
 
 for what in "$topub"
