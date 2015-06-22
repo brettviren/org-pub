@@ -7,3 +7,6 @@
 [submodule "pelican/orgonpy"]
 	path = pelican/orgonpy
 	url = git@github.com:brettviren/orgonpy.git
+[submodule "pelican/themes/elegant"]
+	path = pelican/themes/elegant
+	url = git@github.com:brettviren/pelican-elegant.git

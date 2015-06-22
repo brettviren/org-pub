@@ -5,68 +5,102 @@
 #+SETUPFILE: ~/org-pub/topics/setup.org
 #+TAGS: emacs,org,python,pelican,web
 
-This web site is written with Emacs [[Http://orgmode.org][org-mode]].  It's source is exported with [[https://github.com/brettviren/orgonpy][OrgOnPy]] and [[http://blog.getpelican.com/][Pelican]].  This topic contains notes on how it is done.
+This web site has evolved over time.  It is currently written with
+Emacs [[Http://orgmode.org][org-mode]].  It's Org source is exported with [[https://github.com/brettviren/orgonpy][OrgOnPy]] and [[http://blog.getpelican.com/][Pelican]].
+This topic contains notes on how this is done.
+
+* Generalities
+
+I use Emacs for producing pretty much all of my information "output".
+Except for Email (and IRC), I use Org mode to manage pretty much all
+my text-based (non-code) output.  The main content that this web site
+exposes are "topics" which are formal(ish) notes (like this one) which
+I produce to remind myself what I did and for the sake of anyone else
+that may be interested.  I will sometimes revise topics after their
+initial "publication".
 
 * Emacs and Org
 
+My [[https://github.com/brettviren/dot-emacs][Emacs config]] is online.  The [[https://github.com/brettviren/dot-emacs/blob/master/init-org.el][Org initialization]] adds to the
+=org-capture-templates= list so I can start a "[[http://orgmode.org/manual/Capture.html][capture]]" of a topic
+with =C-c c b= or revisit an existing topic with =C-c c B=.  
+
+Because a topic may include multiple files, I have this start a
+sub-directory for each topic under my topics storage area
+(=~/org-pub/topics=).
+
+Each new topic is created using a [[https://github.com/brettviren/org-pub/blob/master/templates/topic-start.template][template]] which will cause Org to
+prompt for various items used later including title, subtitle,
+category, tags (note, not same as Org headline tags) as well as
+automatically fill some things like the date stamp (interpreted as a
+creation date).  It also sets a =SETUPFILE= which contains some
+minimal, global Org setup.
+
+During authoring I can get a preview of how things look by doing a
+local export (eg, =C-c C-e l p= for PDF, =C-c C-e h h= for HTML).
+This export is not what eventually turns into the web page.
+
 * OrgOnPy
+
+Unfortunately, I have never been able to fully grok Elisp and Python
+is my preferred scripting language.  So that I may process content in
+Org in non-trivial ways I have developed [[https://github.com/brettviren/orgonpy][OrgOnPy]].  It works by running
+some Elisp which I did manage to write with a lot of help from the Org
+mailing list to get the Org document as an =org-element= tree.  It
+then breaks some of the circular references that exist in that tree
+before using Emacs's =json= module to convert it to JSON.  OrgOnPy
+provides an =org-element=-like tree representation which can then be
+used to provide Python objects which are somewhat reminiscent of their
+Elisp counterparts.
 
 * Pelican
 
-** Themes
+Pelican is a static site generator.  It is well designed with fairly
+good layering and a plugin system.  HTML is generated from two paths:
+the overall structure of the pages is determined by Jinja templates
+driven by metadata while the "payload" content is directly converted
+from the content source files.
 
-The desired themes should satisfy these criteria
+It is the job of the "reader" layer to provide metadata and HTML
+content.  The "reader" is an explicit layer in the Pelican design and
+it comes with readers that support Markdown, rST and AsciiDoc.  One
+may also provide the "reader" as a plugin which is what OrgOnPy does
+to add support for source files in Org markup.  The [[https://github.com/brettviren/orgonpy/tree/master/pelican-plugin/orgonpy][OrgOnPy Pelican
+reader]] is heavily inspired by [[https://github.com/getpelican/pelican-plugins/tree/master/org_reader][=org_reader=]] which is part of the
+Pelican plugin collection.  OrgOnPy also provides a [[https://github.com/brettviren/orgonpy/tree/master/pelican-plugin/extract_toc][modified version
+of the =extract_toc=]] plugin also from the Pelican plugin collection.
 
- - looks "good", if it fails this it gets a zero
- - good difference between code and text, distinct but not jarring
- - indices made up of "teasers" of articles, (this can probably be easily tweaked)
- - large images should not be cut out (see GraphViz diagram in "desk" for example)
- - prominently displays list of categories links
- - prominently displays list of archives link
- - prominently displays list of tags link
- - must wrap long code lines
- - must gracefully scale
+Pelican has a number of "themes" which provide for HTML structure and
+CSS styling.  For the most part a theme is defined at a layer boundary
+so that most themes can be interchanged without changes to the source
+content files.  I made a [[./pelican-themes.org][a survey of Pelican themes]] ultimately
+settling on [[https://github.com/talha131/pelican-elegant/][elegant]] as being closest in structure and functionality to
+what I wanted.  Inevitably I wanted to tweak so I have lightly [[https://github.com/brettviren/org-pub/tree/master/pelican/site/themes/elegant][forked elegant]].
 
-Testing
+** Machinations
 
- - check for screen shots in theme dir.  They are not often up-to-date at all, but if horrible, then pass.
- - generate with =rm -rf output/*; pelican content -t ~/org-pub/pelican/pelican-themes/THEME=
- - reload http://127.0.0.1:8000/.  Must hit reload to get all CSS refreshed.
+Create an environment for building the web site
 
-Selected:
+#+BEGIN_EXAMPLE
+  $ virtualenv --system-site-packages venv
+  $ source venv/bin/activate
+  $ pip install pelican 
+#+END_EXAMPLE
 
-- elegant ::  Title-only indices, interesting category browser (super-script number counts the entries, kind of weird), drop down menu.  good but maybe too cutsie, tag searching, general search input but it is broken (no search.html).  Scaling to mobile.  dump scaling on far zoom out
+Build the site
 
-Top ranked
+#+BEGIN_EXAMPLE
+  $ cd ~/org-pub/pelican/site
+  $ pelican
+  $ (cd output && python -m pelican.server)
+#+END_EXAMPLE
 
-- gum :: good side bar (pages, categories, tags), teaser indices, handles long code lines, nav bar, tags
-
-- pelipress ::  good nav, good scaling, teaser indices, scrolling code, collapsible sidebar, no home link, needs translation
-
-- fresh ::  good layout, style, scale.  good nav
-
-
-Second place
-
-- blueidea :: (3) most recent article followed by other articles with teasers. top category bar
-
-- bootstrap :: (3) teaser-based main, sidebar links, tags and categories easy access.  visual separation between teasers could use some kind of divider.
-
-- bootstrap2 :: (3) similar, a little more clear layout
-
-- cebong :: (3) looks very nice, main+teasers index, looks like LaTeX, cuts big images
-
-- Just-Read :: (3) good, single teaser followed by title-only index, no category listing
-
-- lannisport :: (3) overlayed side bar, full article index, "paper" background
-
-- pelican-sober :: (3) looks good, scales good, lacks some nav, full-article indices
-
-Questions:
-
-- how to control the teaser blurb?
+Content is held in =site/content/= and exists as either immediate
+files or relative symlinks to sub-directories of =topics/=.
 
 * Links
+
+There are other ways to use Org to make web pages.  Here are some I've looked at.
 
 - http://www.seas.upenn.edu/~heqin/academic/sitecreation.html
 - http://doc.norang.ca/org-mode.html
@@ -75,9 +109,3 @@ Questions:
 - http://kerunix.com/blog-using-orgmode-and-pelican.html
 - http://steckerhalter.co.vu/posts/blogging-with-org-mode.html
 - http://justinlilly.com/emacs/orgmode_static_site_generator.html
-* Testing section closed time stamps
-  CLOSED: [[2015-01-24 Sat 10:20]]
-
-This section was created with a closed date.
-
-Now reopened.
