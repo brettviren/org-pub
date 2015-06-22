@@ -82,9 +82,9 @@ what I wanted.  Inevitably I wanted to tweak so I have lightly [[https://github.
 Create an environment for building the web site
 
 #+BEGIN_EXAMPLE
-  $ virtualenv --system-site-packages venv
+  $ virtualenv venv
   $ source venv/bin/activate
-  $ pip install pelican 
+  $ pip install pelican beautifulsoup4
 #+END_EXAMPLE
 
 Build the site
@@ -97,6 +97,13 @@ Build the site
 
 Content is held in =site/content/= and exists as either immediate
 files or relative symlinks to sub-directories of =topics/=.
+
+That build locally.  Deployment is done with the help of the Fabric file and goes like:
+
+#+BEGIN_EXAMPLE
+  $ pip install fabric
+  $ 
+#+END_EXAMPLE
 
 * Links
 
