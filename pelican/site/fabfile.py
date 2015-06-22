@@ -16,7 +16,7 @@ production = 'bviren@gateway.phy.bnl.gov:22'
 dest_path = '/home/bviren/public_html'
 
 # User web area for "publish_userdir" command
-userdir_path = '/home/bv/public_html/pel'
+userdir_path = os.path.expanduser('~/public_html/pel')
 
 # Rackspace Cloud Files configuration settings
 env.cloudfiles_username = 'my_rackspace_username'
