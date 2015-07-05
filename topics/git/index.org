@@ -71,15 +71,16 @@ Following =git flow=, releases come from =develop= and give the target release t
   $ git flow release start 0.6.0
 #+END_EXAMPLE
 
-Now edit =setup.py= to reflect new version (remove "=-dev=") and commit:
+Now edit =setup.py= to reflect new version (remove "=-dev=") and commit and change any dependency versions that might be needed (deps may also change as part of development).:
 
 #+BEGIN_EXAMPLE
+  $ emacs setup.py requirements.txt
   $ grep version setup.py
         version = '0.6.0',
   $ git commit -a -m "Set version to 0.6.0."
 #+END_EXAMPLE
 
-If there is any additional release munging needed, do it now.  If =develop= was essentially ready to release already then there is nothing more to do.  
+If there is any additional release munging needed, do it now.  But, if =develop= was essentially ready to release already then there is nothing more to do.  If there are features to merge, they should happen as part of the end game of [[Work in a feature branch][working in a feature branch]] and not onto a release branch.
 
 Now, finish up:
 

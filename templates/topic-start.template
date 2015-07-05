@@ -1,4 +1,7 @@
 #+TITLE: %^{title}
+#+SUBTITLE: %^{subtitle}
+#+CATEGORY: %^{category}
+#+TAGS: %^{tags}
 #+DATE: %U
 #+DESCRIPTION: %^{description}
 #+SETUPFILE: ~/org-pub/topics/setup.org

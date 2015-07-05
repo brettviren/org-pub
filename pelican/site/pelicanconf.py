@@ -3,6 +3,11 @@
 from __future__ import unicode_literals
 import os
 
+org_pub_dir = os.path.expanduser('~/org-pub')
+pel_dir = os.path.join(org_pub_dir, 'pelican')
+orgonpy_dir = os.path.join(pel_dir, 'orgonpy')
+theme_dir = os.path.join(pel_dir, 'themes')
+
 AUTHOR = u'Brett Viren'
 SITENAME = u'They Call Me Brett'
 SITEURL = 'http://localhost:800'
@@ -27,7 +32,7 @@ LINKS = (
 )
 
 # my hacked version of 'elegant'
-THEME = 'themes/elegant'
+THEME = os.path.join(theme_dir, 'elegant')
 
 # Social widget - modified for my copy of 'elegant' theme
 SOCIAL = (
@@ -41,7 +46,6 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-orgonpy_dir = os.path.expanduser('~/org-pub/pelican/orgonpy')
 PLUGIN_PATHS = [os.path.join(orgonpy_dir,'python'),
                 os.path.join(orgonpy_dir,'pelican-plugin')]
 #                os.path.expanduser('~/org-pub/pelican/pelican-plugins')]
