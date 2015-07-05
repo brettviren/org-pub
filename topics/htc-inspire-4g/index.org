@@ -154,3 +154,22 @@ Success!  woo hoo
 - install GApps minimal 
 
 Rebootin' tootin' and we are good to go.  
+
+* Upgrade to CM 12.1
+
+- [[http://www.thatsallnow.com/2015/04/17/android-5-1-lollipop-on-desire-hd-all-you-need-to-know/][here is one succinct set of instructions]]
+
+#+BEGIN_EXAMPLE
+9044f63fc16cf7d4b8d1612652bf4844  openrecovery-TWRP-ace-2.8.6.1-unofficial.img
+71bc66a23b289b382dbca2dd5b49ebc9  cm-12.1-20150701-UNOFFICIAL-ace.zip
+0b2634b2d57aec091aaf451cfce01150  L_SPEED_V2.2_REVOLUTION.zip
+dceef84c307c3565eabd014d675242a7  inspiremod-revamped-nobranding-20150303-signed.zip
+2ad33a2f749a1edf9e20b89ce71f0ca1  gapps-511-base-20150701-1-signed.zip
+#+END_EXAMPLE
+
+Results:
+
+- really slow boot times.
+- slow system but seems to be getting faster.
+- future updates can be done through OTA updates.
+
