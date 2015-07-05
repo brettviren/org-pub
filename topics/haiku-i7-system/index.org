@@ -2,13 +2,31 @@
 #+DATE: [2014-06-28 Sat 19:40]
 #+DESCRIPTION: This holds various things about my i7 machine.
 #+SETUPFILE: ~/org-pub/topics/setup.org
+#+CATEGORY: hardware
 
-* Compare Building ROOT on SSD and HDD
+After a long time using ever aging computers at home I built a new workstation.
+
+* Specs
+
+- OS :: Ubuntu 15.04
+- mobo :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16813157500][ASRock Z97 Extreme6]] (10 SATA)
+- CPU :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16819116901][i7-4770K at 3.5GHz]]
+- RAM :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16820231560][2x8GB G.SKILL Ares 240-pin DDR3]] (two slots still available)
+- GPU :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16814487024][EVGA 02G-P4-3753-KR GeForce GTX 750 Ti Superclocked]]
+- case :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16811139022][Corsair Carbide Air 540 Black]]
+- HDD :: 2x [[http://www.newegg.com/Product/Product.aspx?Item=N82E16822148844][Seagate Barracuda 7200.14 ST3000DM001 3TB]]
+- SDD :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16820171646][SanDisk SDSSDP-128G-G25]]
+- PS :: [[http://www.newegg.com/Product/Product.aspx?Item=N82E16817139058][CORSAIR CSM CS450M 450W]]
+
+Total cost was just over 1.1k.
+
+* Some benchmarking
+** Compare Building ROOT on SSD and HDD
 
 - SSD :: 
 - HDD :: Seagate
 
-** Download speed.
+*** Download speed.
 
 Obviously dominated by network.
 
@@ -24,7 +42,7 @@ user	0m0.313s
 sys	0m1.325s
 #+END_EXAMPLE
 
-** Unpack
+*** Unpack
 
 #+BEGIN_EXAMPLE
 hdd$ sync; sync; sync
@@ -43,7 +61,7 @@ sys	0m0.314s
 
 Trying this a second time shows these times are probably good to the first decimal place.
 
-** Configure
+*** Configure
 
 Prepare the OS with the slew of build dependencies:
 
@@ -73,7 +91,7 @@ user	0m2.773s
 sys	0m0.590s
 #+END_EXAMPLE
 
-** Build
+*** Build
 
 Serial make.  This fails at 71% in =libAfterImage=, so just for timing purposes:
 
@@ -91,7 +109,7 @@ sys	0m53.906s
 
 Well, that's underwhelming.
 
-* Building ROOT v6
+** Building ROOT v6
 
 #+BEGIN_EXAMPLE
 $ time make -j 8
