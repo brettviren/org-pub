@@ -10,7 +10,7 @@ theme_dir = os.path.join(pel_dir, 'themes')
 
 AUTHOR = u'Brett Viren'
 SITENAME = u'They Call Me Brett'
-SITEURL = 'http://localhost:800'
+SITEURL = 'http://localhost:8000'
 
 PATH = 'content'
 
