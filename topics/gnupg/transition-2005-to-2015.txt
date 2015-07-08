@@ -1,0 +1,23 @@
+I am transitioning between OpenPGP keys in order to upgrade from a
+1024D to a 4096R key.
+
+Since 2005 I have used this key:
+
+pub   1024D/0x122C47D99D1D282C 2005-12-20
+      Key fingerprint = 04A6 309A D560 D339 D027  2924 122C 47D9 9D1D 282C
+
+Starting now I will begin using this key:
+
+pub   4096R/0x5B0071E097A51B47 2015-07-08
+      Key fingerprint = F37E 5F67 394D 3592 5D37  EE66 5B00 71E0 97A5 1B47
+
+The 0x122C key will continue to be valid for some time but I now will
+start signing email with the 0x5B00 key and would prefer that everyone
+use this new one when encrypting.  If you have trusted the old key I
+request you likewise trust the new one.
+
+This message is signed by my new key followed by my old key.
+
+Brett Viren.
+2015-07-07
+
