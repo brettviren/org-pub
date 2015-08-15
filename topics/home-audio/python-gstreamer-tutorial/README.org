@@ -1,0 +1,4 @@
+[[http://docs.gstreamer.com/display/GstSDK/Tutorials][The tutorial]] in [[http://gstreamer.freedesktop.org/modules/gst-python.html][in Python]].
+
+
+http://docs.gstreamer.com/display/GstSDK/Home
