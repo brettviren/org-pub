@@ -101,7 +101,21 @@ To determine if Nix can be used in a practical sense in HEP, some prototyping is
 3) Include releases of experiment-level package.
 4) Develop methods and helper tools to develop on experiment packages.
 
+* See also
+
+- [[./root5.org][notes on existing ROOT5 packaging]]
+- [[./root6.org][notes creating new ROOT6 packaging]]
+
+** Links
+
+- http://christopherpoole.github.io/My-workflow-for-adding-packages-to-nixpkgs/
+
+
 [fn:relocatable] The term "relocatable" is used in some systems like UPS.  There, it takes a weak definition as the relocation is only possible through setting user environment variables.  Nix provides a PatchELF tool with which one can produce binary executable and library files which can be truly relocated.  It works by rewriting the path strings that are compiled into the binaries.  If rewritten to their relocated locations the environment setting that must otherwise be modified need not be.
 
 [fn:root] Someone has already packaged a recent ROOT 5 for Nix but its build happens to be failing at the time of writing.
+
+
+
+
 

@@ -79,7 +79,7 @@ def cf_upload():
               'upload -c {cloudfiles_container} .'.format(**env))
 
 @hosts(production)
-def publish():
+def bnl():
     """Publish to production via rsync"""
     local('pelican -s publishconf.py')
     project.rsync_project(
@@ -90,11 +90,11 @@ def publish():
         extra_opts='-c',
     )
 
-def publish_userdir():
+def localhost():
     """Publish to production via rsync"""
     local('pelican -s publishconf_userdir.py -o %s' % userdir_path)
 
-def publish_github():
+def github():
     """Publish to GitHub Pages"""
     outdir=os.path.realpath(os.path.join(os.curdir, 'github'))
     local('pelican -s pelicanconf.py -s publishconf_github.py -o %s' % outdir)
