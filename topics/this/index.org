@@ -1,9 +1,11 @@
 #+TITLE: This site.
 #+DATE: [2014-03-02 Sun 15:02]
-#+SUBTITLE: Using of Emacs, Org and Pelican to make this site..
+#+SUBTITLE: Using of Emacs, Org and Python to make a web site.
 #+CATEGORY: Meta
 #+SETUPFILE: ~/org-pub/topics/setup.org
 #+TAGS: emacs,org,python,pelican,web
+#+DESCRIPTION: This site is generated from Emacs Org-mode sources.  Over the years, it has evolved to use various systems.  How it is published is described.
+
 
 This web site has evolved over time.  It is currently written with
 Emacs [[Http://orgmode.org][org-mode]].  It's Org source is exported with [[https://github.com/brettviren/orgonpy][OrgOnPy]] and [[http://blog.getpelican.com/][Pelican]].
@@ -18,6 +20,10 @@ exposes are "topics" which are formal(ish) notes (like this one) which
 I produce to remind myself what I did and for the sake of anyone else
 that may be interested.  I will sometimes revise topics after their
 initial "publication".
+
+** History
+
+This site went through many iterations.  Below we go through them in reverse chronological order.
 
 * Emacs and Org
 

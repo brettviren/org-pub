@@ -1,1 +1,1 @@
-#+OPTIONS: toc:t
+#+OPTIONS: toc:nil

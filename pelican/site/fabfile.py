@@ -97,7 +97,7 @@ def localhost():
 def github():
     """Publish to GitHub Pages"""
     outdir=os.path.realpath(os.path.join(os.curdir, 'github'))
-    local('pelican -s pelicanconf.py -s publishconf_github.py -o %s' % outdir)
+    local('pelican -s publishconf_github.py -o %s' % outdir)
     
     with lcd(os.path.expanduser('~/git/brettviren.github.com')):
         local("ghp-import -b {github_pages_branch} {outdir}".format(outdir=outdir, **env))
