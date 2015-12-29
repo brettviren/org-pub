@@ -1,0 +1,219 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="567.429" height="384.969" viewBox="0 0 567.429 384.969" xmlns="http://www.w3.org/2000/svg">
+<title>
+output_0_1.svg
+</title>
+<desc>
+Creator: ROOT Version 6.07/02
+CreationDate: Mon Dec 28 17:28:12 2015</desc>
+<defs>
+</defs>
+<rect x="0.5" y="0" width="566.929" height="384.469" fill="white"/>
+<rect x="57.1929" y="38.4469" width="453.543" height="307.575" fill="white"/>
+<rect x="57.1929" y="38.4469" width="453.543" height="307.575" fill="none" stroke="black"/>
+<rect x="57.1929" y="38.4469" width="453.543" height="307.575" fill="white"/>
+<rect x="57.1929" y="38.4469" width="453.543" height="307.575" fill="none" stroke="black"/>
+<path d="M57.1929,346.022h 35.4331v -5.63325h 7.08661v 5.63325h 14.1732v -5.63325h 7.08661v -5.63325h 7.08661v 5.63325h 14.1732v -14.0831h 7.08661v 5.63325h 7.08661v 5.63325h 7.08661v -42.2494h 7.08661v -8.44987h 7.08661v -2.81662h 7.08661v -2.81662h
+ 7.08661v -22.533h 7.08661v -28.1662h 7.08661v -5.63325h 7.08661v -8.44987h 7.08661v -61.9657h 7.08661v 30.9829h 7.08661v -39.4327h 7.08661v -5.63325h 7.08661v -87.3153h 7.08661v 90.132h 7.08661v -73.2322h 7.08661v 36.6161h 7.08661v -47.8826h
+ 7.08661v 59.1491h 7.08661v -64.7823h 7.08661v 11.2665h 7.08661v 59.1491h 7.08661v -56.3325h 7.08661v 78.8655h 7.08661v -22.533h 7.08661v 59.1491h 14.1732v 19.7164h 7.08661v 14.0831h 7.08661v 30.9829h 14.1732v 28.1662h 7.08661v 14.0831h 7.08661v
+ 14.0831h 7.08661v 11.2665h 7.08661v 22.533h 7.08661v -16.8997h 7.08661v 11.2665h 14.1732v 5.63325h 14.1732v 8.44987h 21.2598v -2.81662h 21.2598v 2.81662h 21.2598" fill="none" stroke="#000099"/>
+<rect x="442.705" y="24.9905" width="113.386" height="61.5151" fill="white"/>
+<path d="M442.705,86.5056h 113.386" fill="none" stroke="black"/>
+<path d="M556.091,86.5056v -61.5151" fill="none" stroke="black"/>
+<path d="M556.091,24.9905h -113.386" fill="none" stroke="black"/>
+<path d="M442.705,24.9905v 61.5151" fill="none" stroke="black"/>
+<text x="495.748" y="38.284" fill="black" font-size="13.4802" font-family="Helvetica">
+h
+</text>
+<path d="M442.705,40.3693h 113.386" fill="none" stroke="black"/>
+<text x="447.69" y="52.946" fill="black" font-size="11.4357" font-family="Helvetica">
+Entries 
+</text>
+<text x="521.814" y="52.946" fill="black" font-size="11.4357" font-family="Helvetica">
+ 2000
+</text>
+<text x="447.69" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+Mean  
+</text>
+<text x="503.079" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+0.006392
+</text>
+<text x="496.563" y="67.6079" fill="black" font-size="11.4357" font-family="Times">
+&#8722;
+</text>
+<text x="493.305" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+ 
+</text>
+<text x="447.69" y="83.0844" fill="black" font-size="11.4357" font-family="Helvetica">
+Std Dev   
+</text>
+<text x="515.298" y="83.0844" fill="black" font-size="11.4357" font-family="Helvetica">
+  1.015
+</text>
+<path d="M57.1929,346.022h 453.543" fill="none" stroke="black"/>
+<text x="502.265" y="373.065" fill="black" font-size="12.8453" font-family="Helvetica">
+X
+</text>
+<path d="M57.1929,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M68.5315,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M79.8701,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M91.2087,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M102.547,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M113.886,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M125.224,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M136.563,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M147.902,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M159.24,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M170.579,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M181.917,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M193.256,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M204.594,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M215.933,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M227.272,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M238.61,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M249.949,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M261.287,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M272.626,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M283.965,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M295.303,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M306.642,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M317.98,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M329.319,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M340.657,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M351.996,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M363.335,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M374.673,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M386.012,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M397.35,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M408.689,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M420.028,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M431.366,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M442.705,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M454.043,336.795v 9.22726" fill="none" stroke="black"/>
+<path d="M465.382,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M476.72,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M488.059,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M499.398,341.409v 4.61363" fill="none" stroke="black"/>
+<path d="M510.736,336.795v 9.22726" fill="none" stroke="black"/>
+<text x="56.7042" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+4
+</text>
+<text x="49.3732" y="358.403" fill="black" font-size="12.8453" font-family="Times">
+&#8722;
+</text>
+<text x="113.723" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+3
+</text>
+<text x="106.392" y="358.403" fill="black" font-size="12.8453" font-family="Times">
+&#8722;
+</text>
+<text x="169.927" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+2
+</text>
+<text x="162.596" y="358.403" fill="black" font-size="12.8453" font-family="Times">
+&#8722;
+</text>
+<text x="227.76" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+1
+</text>
+<text x="220.429" y="358.403" fill="black" font-size="12.8453" font-family="Times">
+&#8722;
+</text>
+<text x="280.706" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+0
+</text>
+<text x="337.725" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+1
+</text>
+<text x="393.929" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+2
+</text>
+<text x="450.133" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+3
+</text>
+<text x="507.152" y="358.403" fill="black" font-size="12.8453" font-family="Helvetica">
+4
+</text>
+<path d="M57.1929,346.022v -307.575" fill="none" stroke="black"/>
+<g transform="rotate(-90,30.6385,48.0586)">
+<text x="30.6385" y="48.0586" fill="black" font-size="12.8453" font-family="Helvetica">
+Y
+</text>
+</g>
+<path d="M70.7992,346.022h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,331.939h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,317.856h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,303.773h -6.80315" fill="none" stroke="black"/>
+<path d="M70.7992,289.69h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,275.607h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,261.524h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,247.44h -6.80315" fill="none" stroke="black"/>
+<path d="M70.7992,233.357h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,219.274h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,205.191h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,191.108h -6.80315" fill="none" stroke="black"/>
+<path d="M70.7992,177.025h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,162.942h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,148.859h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,134.775h -6.80315" fill="none" stroke="black"/>
+<path d="M70.7992,120.692h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,106.609h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,92.5261h -6.80315" fill="none" stroke="black"/>
+<path d="M63.9961,78.443h -6.80315" fill="none" stroke="black"/>
+<path d="M70.7992,64.3599h -13.6063" fill="none" stroke="black"/>
+<path d="M70.7992,64.3599h -13.6063" fill="none" stroke="black"/>
+<path d="M63.9961,50.2767h -6.80315" fill="none" stroke="black"/>
+<text x="47.7441" y="350.258" fill="black" font-size="12.8453" font-family="Helvetica">
+0
+</text>
+<text x="40.4131" y="294.054" fill="black" font-size="12.8453" font-family="Helvetica">
+20
+</text>
+<text x="40.4131" y="237.85" fill="black" font-size="12.8453" font-family="Helvetica">
+40
+</text>
+<text x="40.4131" y="181.645" fill="black" font-size="12.8453" font-family="Helvetica">
+60
+</text>
+<text x="40.4131" y="125.441" fill="black" font-size="12.8453" font-family="Helvetica">
+80
+</text>
+<text x="33.8967" y="69.237" fill="black" font-size="12.8453" font-family="Helvetica">
+100
+</text>
+<rect x="442.705" y="24.9905" width="113.386" height="61.5151" fill="white"/>
+<path d="M442.705,86.5056h 113.386" fill="none" stroke="black"/>
+<path d="M556.091,86.5056v -61.5151" fill="none" stroke="black"/>
+<path d="M556.091,24.9905h -113.386" fill="none" stroke="black"/>
+<path d="M442.705,24.9905v 61.5151" fill="none" stroke="black"/>
+<text x="495.748" y="38.284" fill="black" font-size="13.4802" font-family="Helvetica">
+h
+</text>
+<path d="M442.705,40.3693h 113.386" fill="none" stroke="black"/>
+<text x="447.69" y="52.946" fill="black" font-size="11.4357" font-family="Helvetica">
+Entries 
+</text>
+<text x="521.814" y="52.946" fill="black" font-size="11.4357" font-family="Helvetica">
+ 2000
+</text>
+<text x="447.69" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+Mean  
+</text>
+<text x="503.079" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+0.006392
+</text>
+<text x="496.563" y="67.6079" fill="black" font-size="11.4357" font-family="Times">
+&#8722;
+</text>
+<text x="493.305" y="67.6079" fill="black" font-size="11.4357" font-family="Helvetica">
+ 
+</text>
+<text x="447.69" y="83.0844" fill="black" font-size="11.4357" font-family="Helvetica">
+Std Dev   
+</text>
+<text x="515.298" y="83.0844" fill="black" font-size="11.4357" font-family="Helvetica">
+  1.015
+</text>
+<text x="237.535" y="18.7347" fill="black" font-size="16.9898" font-family="Helvetica">
+ROOT Histo
+</text></svg>

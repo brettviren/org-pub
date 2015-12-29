@@ -19,7 +19,7 @@ I started out looking into just putting up some kind of inventory management sys
 
 * Setting up a client
 
-Here describes adding a Debian-like client to the system.  Debian is not yet officially supported by the RACF team so some work on the service side is expected to be needed.  So, this starts slowly with just getting a box to report via GLPI/FI and with Puppet applying the =bnl_banner= module.  I also put on [[etckeeper][https://github.com/joeyh/etckeeper]] because it's cool and because it's integrated with Debian's Puppet package.
+Here describes adding a Debian-like client to the system.  Debian is not yet officially supported by the RACF team so some work on the service side is expected to be needed.  So, this starts slowly with just getting a box to report via GLPI/FI and with Puppet applying the =bnl_banner= module.  I also put on [[https://github.com/joeyh/etckeeper][etckeeper]] because it's cool and because it's integrated with Debian's Puppet package.
 
 ** Installation
 
