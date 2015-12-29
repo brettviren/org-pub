@@ -47,7 +47,8 @@ def find_build_file(filename, ext):
     path = osp.join(blddir, path).replace(origext, ext)
     if osp.isfile(path):
         return path
-    return None
+    raise RuntimeError, "No such build file: %s" % path
+
 
 def load_revs_file(revsfile):
     "Read git revs file and return list of tuple."
@@ -61,6 +62,8 @@ def load_revs_file(revsfile):
             t = time.gmtime(float(timestamp))
             dt = datetime.datetime(*t[:6])
             ret.append((githash, dt))
+    if not ret:
+        raise RuntimeError,"Empty git revs for file: %s"%revsfile        
     return ret;
 
 

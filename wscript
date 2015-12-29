@@ -26,13 +26,22 @@ class org2revs(Task):
     ext_out = ['.revs']
 
 class org2html(Task):
-    run_str = "${JOY} render ${SRC} topic.html ${TGT}"
-    ext_out = ['.revs']
+    run_str = "${JOY} render ${SRC[0].abspath()} topic.html ${TGT}"
+    ext_out = ['.html']
 
 @TaskGen.extension(".org")
 def process_org_task(self, node):
-    for op in 'body json revs html'.split():
-        self.create_task('org2%s'%op,node,node.change_ext('.%s'%op))
+    outs = list()
+    for op in 'body json revs'.split():
+        out = node.change_ext('.%s'%op)
+        outs.append(out)
+        self.create_task('org2%s'%op,node,out)
+
+    print node
+    for o in outs:
+        print '\t',o
+
+    self.create_task('org2html',[node]+outs,node.change_ext('.html'))
 
 def build(bld):
 
