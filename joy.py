@@ -114,6 +114,7 @@ class JoyFile(object):
     def __init__(self, orgfile):
         orgfile = osp.abspath(orgfile)
         self.orgpath = orgfile
+        self.orgtext = open(orgfile).read()
         self.srcfile = osp.basename(orgfile)
         self.env = get_env(orgfile)
         self.orgjson = json.load(open(find_build_file(orgfile, '.json')))

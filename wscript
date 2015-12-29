@@ -37,10 +37,6 @@ def process_org_task(self, node):
         outs.append(out)
         self.create_task('org2%s'%op,node,out)
 
-    print node
-    for o in outs:
-        print '\t',o
-
     self.create_task('org2html',[node]+outs,node.change_ext('.html'))
 
 def build(bld):

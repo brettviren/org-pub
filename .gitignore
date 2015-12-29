@@ -16,3 +16,4 @@ log
 output
 github
 venv
+.waf*
