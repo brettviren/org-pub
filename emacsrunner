@@ -1,4 +1,0 @@
-#!/bin/bash
-src=$(readlink -f $3)
-tgt=$(readlink -f $4)
-emacs --batch -Q -l $1 --eval "($2 \"$src\" \"$tgt\")"
