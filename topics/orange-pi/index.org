@@ -409,7 +409,7 @@ Reboot with SD card removed.  Success!  Do =fs_resize= and reboot again.
   root@lpc:~# ./install_mate_desktop 
   ...
   usermod: user 'orangepi' does not exist
-  chown: invalid user: ‘orangepi:orangepi’
+  chown: invalid user: 'orangepi:orangepi'
   ...
   ,**********************************************
   ,* MATE DESKTOP INSTALLED, please REBOOT now! *
@@ -454,19 +454,19 @@ Resolving loboris.eu (loboris.eu)... 82.196.4.208
 Connecting to loboris.eu (loboris.eu)|82.196.4.208|:80... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 16788502 (16M) [application/x-gzip]
-Saving to: ‘/tmp/boot_kernel/boot_kernel.tar.gz’
+Saving to: '/tmp/boot_kernel/boot_kernel.tar.gz'
 
 /tmp/boot_kernel/boot_kernel. 100%[=================================================>]  16.01M  5.24MB/s   in 3.1s   
 
-2015-07-18 18:07:57 (5.24 MB/s) - ‘/tmp/boot_kernel/boot_kernel.tar.gz’ saved [16788502/16788502]
+2015-07-18 18:07:57 (5.24 MB/s) - '/tmp/boot_kernel/boot_kernel.tar.gz' saved [16788502/16788502]
 
 Unpacking ...
-‘./boot0_sdcard_OPI-2.fex’ -> ‘/boot/boot0_sdcard_OPI-2.fex’
-‘./boot0_sdcard_OPI-PLUS.fex’ -> ‘/boot/boot0_sdcard_OPI-PLUS.fex’
-‘./u-boot_OPI-2.fex’ -> ‘/boot/u-boot_OPI-2.fex’
-‘./u-boot_OPI-PLUS.fex’ -> ‘/boot/u-boot_OPI-PLUS.fex’
-‘./uImage_OPI-2’ -> ‘/boot/uImage_OPI-2’
-‘./uImage_OPI-PLUS’ -> ‘/boot/uImage_OPI-PLUS’
+'./boot0_sdcard_OPI-2.fex' -> '/boot/boot0_sdcard_OPI-2.fex'
+'./boot0_sdcard_OPI-PLUS.fex' -> '/boot/boot0_sdcard_OPI-PLUS.fex'
+'./u-boot_OPI-2.fex' -> '/boot/u-boot_OPI-2.fex'
+'./u-boot_OPI-PLUS.fex' -> '/boot/u-boot_OPI-PLUS.fex'
+'./uImage_OPI-2' -> '/boot/uImage_OPI-2'
+'./uImage_OPI-PLUS' -> '/boot/uImage_OPI-PLUS'
 Files unpacked to /boot
 =======================
 
@@ -493,7 +493,7 @@ Boot files updated, please REBOOT.
 
 Do you want to write the new kernel (uImage) to fat partition (y/N)?  y
 ./update_boot.sh: line 116: [: /media/lpc/BOOT: binary operator expected
-cp: target ‘/mnt/uImage’ is not a directory
+cp: target '/mnt/uImage' is not a directory
 
 uImage updated, please REBOOT.
 ==============================
@@ -585,19 +585,19 @@ Back in loboris's, redo:
   Connecting to loboris.eu (loboris.eu)|82.196.4.208|:80... connected.
   HTTP request sent, awaiting response... 200 OK
   Length: 16788502 (16M) [application/x-gzip]
-  Saving to: ‘/tmp/boot_kernel/boot_kernel.tar.gz’
+  Saving to: '/tmp/boot_kernel/boot_kernel.tar.gz'
 
   /tmp/boot_kernel/boot_kernel. 100%[=================================================>]  16.01M  5.19MB/s   in 3.1s   
 
-  2015-07-18 18:52:42 (5.19 MB/s) - ‘/tmp/boot_kernel/boot_kernel.tar.gz’ saved [16788502/16788502]
+  2015-07-18 18:52:42 (5.19 MB/s) - '/tmp/boot_kernel/boot_kernel.tar.gz' saved [16788502/16788502]
 
   Unpacking ...
-  ‘./boot0_sdcard_OPI-2.fex’ -> ‘/boot/boot0_sdcard_OPI-2.fex’
-  ‘./boot0_sdcard_OPI-PLUS.fex’ -> ‘/boot/boot0_sdcard_OPI-PLUS.fex’
-  ‘./u-boot_OPI-2.fex’ -> ‘/boot/u-boot_OPI-2.fex’
-  ‘./u-boot_OPI-PLUS.fex’ -> ‘/boot/u-boot_OPI-PLUS.fex’
-  ‘./uImage_OPI-2’ -> ‘/boot/uImage_OPI-2’
-  ‘./uImage_OPI-PLUS’ -> ‘/boot/uImage_OPI-PLUS’
+  './boot0_sdcard_OPI-2.fex' -> '/boot/boot0_sdcard_OPI-2.fex'
+  './boot0_sdcard_OPI-PLUS.fex' -> '/boot/boot0_sdcard_OPI-PLUS.fex'
+  './u-boot_OPI-2.fex' -> '/boot/u-boot_OPI-2.fex'
+  './u-boot_OPI-PLUS.fex' -> '/boot/u-boot_OPI-PLUS.fex'
+  './uImage_OPI-2' -> '/boot/uImage_OPI-2'
+  './uImage_OPI-PLUS' -> '/boot/uImage_OPI-PLUS'
   Files unpacked to /boot
   =======================
 

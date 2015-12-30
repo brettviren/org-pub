@@ -198,8 +198,8 @@ Edit:
   ...
   Shadow passwords are now on.
   You can log into install clients without password using /home/bv/.ssh/id_rsa.pub
-  cp: cannot stat ‘/home/sys/var/lib/fai/nfsroot/live/filesystem.dir/boot/vmlinu?-*’: No such file or directory
-  cp: cannot stat ‘/home/sys/var/lib/fai/nfsroot/live/filesystem.dir/boot/initrd.img-*’: No such file or directory
+  cp: cannot stat '/home/sys/var/lib/fai/nfsroot/live/filesystem.dir/boot/vmlinu?-*': No such file or directory
+  cp: cannot stat '/home/sys/var/lib/fai/nfsroot/live/filesystem.dir/boot/initrd.img-*': No such file or directory
   DHCP environment prepared. If you want to use it, you have to enable the dhcpd and the tftp-hpa daemon.
   ERROR: No initrd installed.
 #+END_EXAMPLE

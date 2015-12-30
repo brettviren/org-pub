@@ -60,7 +60,7 @@ The goal here is to build ROOT6 as a Nix package.  Someone has already packaged 
   $ nix-env -qa root
   root-5.34.15
   $ nix-env -i root
-  installing ‘root-5.34.15’
+  installing 'root-5.34.15'
   ...
   Linking CXX shared library ../../lib/libRGL.so
   CMakeFiles/RGL.dir/src/TX11GL.cxx.o: In function `TX11GLManager::ReadGLBuffer(int)':
@@ -101,8 +101,8 @@ The goal here is to build ROOT6 as a Nix package.  Someone has already packaged 
   [ 92%] Built target TMVA
   Makefile:136: recipe for target 'all' failed
   make: *** [all] Error 2
-  builder for ‘/nix/store/l88wsvbpjr3lrz7pzfc3b0mj6hhrg25j-root-5.34.15.drv’ failed with exit code 2
-  error: build of ‘/nix/store/l88wsvbpjr3lrz7pzfc3b0mj6hhrg25j-root-5.34.15.drv’ failed
+  builder for '/nix/store/l88wsvbpjr3lrz7pzfc3b0mj6hhrg25j-root-5.34.15.drv' failed with exit code 2
+  error: build of '/nix/store/l88wsvbpjr3lrz7pzfc3b0mj6hhrg25j-root-5.34.15.drv' failed
 #+END_EXAMPLE
 
 Seems that the ROOT package doesn't depend on X11 libs.

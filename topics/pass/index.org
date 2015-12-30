@@ -20,7 +20,7 @@ Initialize the store using an encryption subkey created just for this purpose.
 
 #+BEGIN_EXAMPLE
   $ pass init '0x4B774E09F6E1EDE9'
-  mkdir: created directory ‘/home/bv/.password-store/’
+  mkdir: created directory '/home/bv/.password-store/'
   Password store initialized for 0x4B774E09F6E1EDE9
   $ pass git init
 #+END_EXAMPLE
