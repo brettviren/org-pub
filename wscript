@@ -39,13 +39,18 @@ def process_org_task(self, node):
         outs.append(out)
         self.create_task('org2%s'%op,node,out)
 
-    self.create_task('org2html',[node]+outs,node.change_ext('.html'))
+    htmlnode = node.change_ext('.html')
+    self.create_task('org2html',[node]+outs, htmlnode)
+    dest = osp.join('${PREFIX}', htmlnode.parent.relpath())
+    self.bld.install_files(dest, htmlnode)
 
+    
 def build(bld):
 
     for topic in bld.path.ant_glob("topics/this/index.org"):
         for org in topic.parent.ant_glob("*.org"):
             bld(source=org)
+            bld.install_files('${PREFIX}',org, cwd=bld.path, relative_trick=True)
     return
 
     
