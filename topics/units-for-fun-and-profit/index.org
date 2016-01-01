@@ -1,4 +1,5 @@
-#+TITLE: Playing with units in org
+#+TITLE: Units, Python and Org
+#+SUBTITLE: Playing with units in org
 #+DATE: [2014-09-03 Wed 08:54]
 #+DESCRIPTION: Some messing around with units.
 #+SETUPFILE: ~/org-pub/topics/setup.org
