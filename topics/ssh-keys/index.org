@@ -1,3 +1,12 @@
+#+TITLE: SSH Keys
+#+DATE: [2015-09-20 Sun 12:00]
+#+SUBTITLE: Handling mulitiple SSH keys
+#+CATEGORY: Security
+#+SETUPFILE: ~/org-pub/topics/setup.org
+#+TAGS: ssh,crypto,security
+#+DESCRIPTION: When the number of SSH keys grows beyond a few, new tools are needed.  
+
+
 * The problem
 
 Over the years I've build up about a dozen SSH key pairs.  They have

@@ -15,46 +15,46 @@ def configure(cfg):
 from waflib.Task import Task
 from waflib import TaskGen
 
-class org2body(Task):
-    def keyword(self): return 'Exporting body'
-    run_str = "${JOY} export -o ${TGT} ${SRC}"
-    ext_out = ['.body']
 
-class org2json(Task):
-    def keyword(self): return 'Exporting JSON'
-    run_str = "${JOY} export -o ${TGT} ${SRC}"
-    ext_out = ['.json']
+def process_org(bld, org):
 
-class org2revs(Task):
-    def keyword(self): return 'Revisions'
-    run_str = "${JOY} revisions -o ${TGT} ${SRC}"
-    ext_out = ['.revs']
+    json = org.change_ext('.json')
+    html = org.change_ext('.html')
+    pdf = org.change_ext('.pdf')
 
-class org2html(Task):
-    def keyword(self): return 'Rendering'
-    run_str = "${JOY} render -o ${TGT} -b ${SRC[1].abspath()} -j ${SRC[2].abspath()} -r ${SRC[3].abspath()} topic.html ${SRC[0].abspath()}"
-    ext_out = ['.html']
+    instdir = '${PREFIX}/' + org.parent.relpath()
 
-@TaskGen.extension(".org")
-def process_org_task(self, node):
-    outs = list()
-    for op in 'body json revs'.split():
-        out = node.change_ext('.%s'%op)
-        outs.append(out)
-        self.create_task('org2%s'%op,node,out)
+    bld(source=org, target=pdf, rule="${JOY} export -o ${TGT} ${SRC}")
+    bld(source=org, target=json, rule="${JOY} -c ${JOYCFG} compile -o ${TGT} ${SRC}")
+    bld(source=json, target=html, rule="${JOY} -c ${JOYCFG} render -o ${TGT} topic ${SRC}")
 
-    htmlnode = node.change_ext('.html')
-    self.create_task('org2html',[node]+outs, htmlnode)
-    dest = osp.join('${PREFIX}', htmlnode.parent.relpath())
-    self.bld.install_files(dest, htmlnode)
-
+    bld.install_files(instdir, org)
+    bld.install_files(instdir, pdf)
+    bld.install_files(instdir, html)
     
 def build(bld):
 
-    for topic in bld.path.ant_glob("topics/*/index.org"):
-        for org in topic.parent.ant_glob("*.org"):
-            bld(source=org)
-            bld.install_files('${PREFIX}',org, cwd=bld.path, relative_trick=True)
+    bld.env.JOYCFG = bld.path.find_resource('joy.cfg').abspath()
+
+    topic_index_jsons = list()
+    for index in bld.path.ant_glob("topics/*/index.org"):
+        topic = index.parent
+
+        topic_index_jsons.append(index.change_ext('.json'))
+
+        # process all orgs in topic directory
+        for org in topic.ant_glob("*.org"):
+            process_org(bld, org)
+
+        bld.install_files('${PREFIX}/'+topic.relpath(),
+                          topic.ant_glob('*.svg') +
+                          topic.ant_glob('*.png') +
+                          topic.ant_glob('*.jpg'))
+
+    feed = bld.path.find_or_declare("feed.xml")
+    bld(source = topic_index_jsons, target=feed,
+        rule = "${JOY} -c ${JOYCFG} render -o ${TGT} feed ${SRC}")
+    bld.install_files('${PREFIX}/'+feed.parent.relpath(), feed)
     return
 
     

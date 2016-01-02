@@ -7,7 +7,7 @@
 
 My email landscape is as shown in the figure below.  The "workstation" is on the internal wired network at work and the "laptop" represents either a machine on the wireless network or on a external network.  The "infrastructure" represents the facilities on the internal network.  Left implicit there is the SSH gateway through which the port forwarding shown as dashed lines happen.  Details on these parts are in the sections below.
 
-#+BEGIN_SRC dot :cmd dot :cmdline -Tpng  :file email.png :exports results :post (org-redisplay-inline-images)
+#+BEGIN_SRC dot :cmd dot :cmdline -Tpng  :file email.png :exports results
 digraph "Email" {
 	graph [clusterrank=local];
 
