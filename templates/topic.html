@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ cfg.title }} -- {{ meta[0].title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1> <b>{{ meta[0].title }}</b> </h1>
+    <h2> <i> {{ meta[0].subtitle }} </i> </h2>
+
+    <ul>
+    {% for item in meta[0].headlines %}
+    <li><a href="#sec-{{ item[0] | join('-') }}">{{ item[0] | join('.') }}. {{ item[1] }}</a></li>
+    {% endfor %}
+    </ul>
+    <blockquote>{{ meta[0].description }}</blockquote>
+
+    {{ org[0].body }}
+
+{% endblock %}
+{% block footer %}
+    <hr/>
+    <a href="{{ org[0].name }}.org">Org ({{ org[0].name }}.org)</a><br>
+    <a href="{{ org[0].name }}.pdf">PDF ({{ org[0].name }}.pdf)</a><br>
+<p>
+  Created: {{ meta[0].created }}<br>
+  Revised: {{ meta[0].revised }}<br>
+
+{% endblock %}    

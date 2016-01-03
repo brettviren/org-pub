@@ -1,5 +1,4 @@
 *~
-*.html
 *.lock-waf*
 build
 install

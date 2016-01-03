@@ -1,6 +1,7 @@
 #!/usr/bin/env waf
 
 import os
+import sys
 import os.path as osp
 
 
@@ -19,7 +20,7 @@ from waflib import TaskGen
 def process_org(bld, org):
 
     json = org.change_ext('.json')
-    html = org.change_ext('.html')
+    html = json.change_ext('.html')
     pdf = org.change_ext('.pdf')
 
     instdir = '${PREFIX}/' + org.parent.relpath()
