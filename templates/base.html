@@ -1,24 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    {% block head %}
-    <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}{% endblock %}</title>
+  <head>
+    {% block head_meta %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock%}
+    
+    <title>{%- block headtitle -%}{{ cfg.sitetitle }}{%- endblock -%}</title>
+    {% block head_css_global %}
+    <link rel="stylesheet" href="{{ cfg.bootstraproot }}css/bootstrap.min.css">
     {% endblock %}
-</head>
-<body>
-  <div class="container">
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
-        {% endblock %}
+    {% block head_css_site %}{% endblock %}
+    {% block head_css_page %}{% endblock %}
+  </head>
+  
+  <body>
+    <div class="{% block bodyclass %}container{% endblock %}">
+
+      <div class="row">
+	{% block body_top %}
+	<h1>{{ cfg.sitetitle }}{%- if cfg.rendertitle %} - {{ cfg.rendertitle }}{%- endif -%}</h1></hr>
+	<p>[navbar here]</p>
+	{% endblock %}
+      </div>
+
+      {% block body_preamble %}<p/>{% endblock %}
+      {% block body_content %}<p/>{% endblock %}
+      {% block body_postamplecontent %}<p/>{% endblock %}
+
+      {% block body_bottom %}<hr/>{% endblock %}
     </div>
-  </div>
-</body>
+
+    {% block body_prefooter %}{% endblock %}
+    <footer>
+      {% block footer %}{% endblock %}
+    </footer>
+    {% block body_postfooter %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{ cfg.bootstraproot }}js/bootstrap.min.js"></script>
+    {% endblock %}
+
+  </body>
+
 </html>

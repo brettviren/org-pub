@@ -1,5 +1,33 @@
 #+TITLE: Public Web Using Org-mode
 
+* Notes
+
+** HTML template organization
+
+The =base.html= file breaks out =<head>=, =<body>= and =<footer> into sub-blocks
+
+
+*** Base HTML blocks
+
+Defined in [[./templates/base.html]] :
+
+**** head
+
+- headmeta :: for =<meta>=, CSS =<link>=, =<script>=
+- headtitle :: for =<title>=
+
+**** body
+
+- bodyhead :: initial body
+- bodycontent :: central body
+- bodytail :: trailing body
+
+*** More structure
+
+- page-head.html :: override =headtitle= to provide specific rendering name.
+
+- =<category>-<block>.html= :: break out =body*= blocks providing category-specific structure.  categories: topics, blog, etc.
+
 * Inspired by
 
 - http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html

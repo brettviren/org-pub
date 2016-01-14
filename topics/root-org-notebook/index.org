@@ -11,6 +11,10 @@
 #+LATEX_HEADER: \setsvg{pretex=\tiny}
 
 * Introduction
+  :PROPERTIES:
+  :date:     2016/01/13 19:39:26
+  :updated:  2016/01/13 19:40:02
+  :END:
 
 In the recent [[https://root.cern.ch/root-has-its-jupyter-kernel][ROOT v6.06 announcement]] we got the interesting news that
 one can now run ROOT from an [[http://jupyter.org][Jupyter]] (ne' [[http://ipython.org][ipython]]) /notebook/.  The
@@ -22,6 +26,10 @@ reading is an attempt to provide a simple, if verbose, ``Org Notebook''
 example.
 
 * Graphics format
+  :PROPERTIES:
+  :date:     2016/01/13 19:52:02
+  :updated:  2016/01/13 19:52:02
+  :END:
 
 Org supports many graphics formats for inline viewing in Emacs or for
 export.  Different export formats ``like'' different graphics formats.
