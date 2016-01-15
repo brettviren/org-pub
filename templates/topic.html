@@ -1,53 +1,26 @@
 {% extends "base.html" %}
 
+{% block tocnav %}
+{%- for item in meta[0].headlines recursive %}
+<li class="">
+  <a href="#sec-{{ item.secnums | join('-') }}">{{ item.secnums | join('.') }}. {{ item.title }}</a>
+  {%- if item.children -%}
+  <ul class="nav">{{ loop(item.children) }}</ul>
+  {%- endif %}</li>
+{%- endfor %}
+{% endblock %}
 
-{% block body_content %}
-<div class="row">
 
-  <div class="col-sm-8 blog-main">
-    <h2 class="blog-post-title">{{ meta[0].title }}</h2>
-    {%- if meta[0].subtitle -%}
-    <p class="blog-post-subtitle">{% block topicsubtitle %}{{ meta[0].subtitle }}{% endblock %}</p>
-    {%- endif -%}
-      
-    <p class="blog-post-meta">
-      {% block topicmeta %}
-      {{ meta[0].created }}
-      {%- if meta[0].created != meta[0].revised -%}(revised {{ meta[0].revised }} ){%- endif -%}
-      {%- if meta[0].description -%}
-      <blockquote>{{ meta[0].description }}</blockquote>
-      {%- endif -%}
-      {% endblock %}
-    </p>
-
-    {{ org[0].body }}
-
-  </div>
-
-  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-    <div class="sidebar-module sidebar-module-inset">{% block topicabout %}{% endblock %}</div>
-    <div class="sidebar-module">{% block topicarchives %}{% endblock %}</div>
-    <!-- fixme: other sidebar modules? -->
-  </div><!-- sidebar -->
-  
-  <div class="col-md-3" role="complementary">
-    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix-top">
-      <ul class="nav bs-docs-sidenav">
-	{%- for item in meta[0].headlines recursive %}
-	<li class="">
-	  <a href="#sec-{{ item.secnums | join('-') }}">{{ item.secnums | join('.') }}. {{ item.title }}</a>
-	  {%- if item.children -%}
-	  <ul class="nav">{{ loop(item.children) }}</ul>
-	  {%- endif %}</li>
-	{%- endfor %}
-      </ul>
-      <a class="back-to-top" href="#top">Back to top</a>
-    </nav><!-- toc -->
-  </div>
-  
-</div><!-- row -->
-
-{% endblock %} <!-- content -->
+{% block content %}
+{% block topicmeta %}
+{{ meta[0].created }}
+{%- if meta[0].created != meta[0].revised -%}(revised {{ meta[0].revised }} ){%- endif -%}
+{%- if meta[0].description -%}
+<blockquote>{{ meta[0].description }}</blockquote>
+{%- endif -%}
+{% endblock %}
+{{ org[0].body }}
+{% endblock %}
 
 {% block footer %}
 <hr/>
