@@ -18,3 +18,7 @@ venv
 .waf*
 old
 foo.*
+*.tex
+*.zip
+*.img
+index.html
