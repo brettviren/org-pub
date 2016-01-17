@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block pagetitle %}
+Articles
+{% endblock %}
+
+{% block pagesubtitle %}
+Extended writeups on revisited topics.
+{% endblock %}
+
+{% block content %}
+{% block topiclist %}
+<ul class="list-group">
+  {% for ind in sorts.created|reverse %}
+  {% set o, m = org[ind],meta[ind] %}
+    <li class="list-group-item"> {{ m.created.strftime('%Y-%m-%d') }} <a href="{{ o.path }}">{{ m.title }}</a> <small>{{ m.subtitle }}</small>
+    <p>{{m.description}}</p></li>
+  {% endfor %}
+</ul>
+{% endblock %}
+{% endblock %}
+

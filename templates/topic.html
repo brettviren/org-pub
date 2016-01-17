@@ -1,4 +1,13 @@
 {% extends "base.html" %}
+{% bock pagetitle %}
+{{ meta[0].title }}
+{% endblock %}
+
+{% block pagesubtitle %}
+{%- if meta[0].subtitle -%}
+{{ meta[0].subtitle }}
+{% endif %}
+{% endblock %}
 
 {% block tocnav %}
 {%- for item in meta[0].headlines recursive %}

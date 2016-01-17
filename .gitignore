@@ -16,3 +16,5 @@ output
 github
 venv
 .waf*
+old
+foo.*
