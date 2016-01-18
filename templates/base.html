@@ -18,7 +18,7 @@
   </head>
   
   <body>
-    
+    {% block body %}
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -67,7 +67,7 @@
     </div><!-- navbar -->
 
     <div class="container">
-
+      {% block container %}
       <div class="col-md-3">
         <div class="bs-sidebar hidden-print affix well" role="complementary">
           <ul class="nav bs-sidenav">
@@ -93,6 +93,7 @@
       {% block postcontent %}<p/>{% endblock %}
       </div><!-- main -->
       
+      {% endblock %}
     </div><!-- content container -->
     
 
@@ -115,6 +116,7 @@
     {% endblock %}
     {% endblock %}
     
+    {% endblock %} 
   </body>
 
 </html>
